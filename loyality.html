@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJ Sites | Loyalty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="loyality.css">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">BJ <span>SITES</span></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Početna</a></li>
+                <li><a href="#" style="color: #fff;">Loyalty</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <h1>Loyalty Status</h1>
+
+        <div class="loyalty-card">
+            <input type="text" id="userInput" placeholder="Tvoje korisničko ime">
+            <button onclick="prikaziStatuse()" class="btn-check">Provjeri Bodove</button>
+
+            <div id="result-box">
+                <span class="res-label">Klijent</span>
+                <span id="resIme" class="res-data"></span>
+
+                <span class="res-label">Web Domena</span>
+                <span id="resUrl" class="res-data" style="color: var(--secondary);"></span>
+
+                <div class="progress-bar">
+                    <div id="barFill" class="fill"></div>
+                </div>
+
+                <div style="text-align: center; font-weight: 800; font-size: 1.4rem;">
+                    <span id="resBodovi">0</span> / 50 bodova
+                </div>
+                <p id="msg" style="text-align: center; margin-top: 10px; font-size: 1rem;"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>&copy; 2026 BJ Sites. Sva prava pridržana.</div>
+        <div class="socials">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-github"></i>
+        </div>
+    </footer>
+
+    <script src="bodovi.js"></script>
+    <script>
+        function prikaziStatuse() {
+            const inputVal = document.getElementById('userInput').value.toLowerCase().trim();
+            const resultBox = document.getElementById('result-box');
+
+            if (typeof BJ_DATABASE === 'undefined') {
+                alert("Greška: bodovi.js nije učitan!"); return;
+            }
+
+            const klijent = BJ_DATABASE[inputVal];
+
+            if (klijent) {
+                document.getElementById('resIme').innerText = klijent.ime;
+                document.getElementById('resUrl').innerText = klijent.url;
+                document.getElementById('resBodovi').innerText = klijent.bodovi;
+
+                let postotak = (klijent.bodovi / 50) * 100;
+                if (postotak > 100) postotak = 100;
+
+                resultBox.style.display = "block";
+
+                // Animacija bara
+                document.getElementById('barFill').style.width = "0%";
+                setTimeout(() => {
+                    document.getElementById('barFill').style.width = postotak + "%";
+                }, 100);
+
+                const msg = document.getElementById('msg');
+                if (klijent.bodovi >= 50) {
+                    msg.innerText = "🎉 Imate pravo na popust!";
+                    msg.style.color = "var(--secondary)";
+                } else {
+                    msg.innerText = "Još samo malo do popusta!";
+                    msg.style.color = "#666";
+                }
+            } else {
+                alert("Korisnik nije pronađen.");
+                resultBox.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
