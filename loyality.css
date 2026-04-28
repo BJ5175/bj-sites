@@ -1,9 +1,17 @@
 :root {
-    --primary: #7000ff;
-    --secondary: #00d9ff;
-    --bg: #050505;
-    --card: #111111;
-    --border: rgba(255, 255, 255, 0.08);
+    --primary: #8b5e3c;
+    /* tamno smeđa */
+    --secondary: #c8a27a;
+    /* bež */
+
+    --bg: #f5efe6;
+    /* glavna pozadina */
+    --card: #ffffff;
+    /* kartica */
+    --border: rgba(0, 0, 0, 0.08);
+
+    --text-main: #2c1f14;
+    --text-gray: #7a6a5a;
 }
 
 * {
@@ -15,19 +23,19 @@
 
 body {
     background: var(--bg);
-    color: #fff;
+    color: var(--text-main);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* --- HEADER / NAVBAR --- */
+/* --- HEADER --- */
 header {
     padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(5, 5, 5, 0.9);
+    background: rgba(245, 239, 230, 0.8);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border);
     position: fixed;
@@ -40,12 +48,11 @@ header {
     font-size: 1.6rem;
     font-weight: 800;
     text-decoration: none;
-    color: #fff;
-    letter-spacing: -1px;
+    color: var(--text-main);
 }
 
 .logo span {
-    color: var(--secondary);
+    color: var(--primary);
 }
 
 nav ul {
@@ -56,16 +63,15 @@ nav ul {
 
 nav ul a {
     text-decoration: none;
-    color: #888;
+    color: var(--text-gray);
     font-weight: 600;
-    transition: 0.3s;
 }
 
 nav ul a:hover {
-    color: #fff;
+    color: var(--primary);
 }
 
-/* --- MAIN CONTENT --- */
+/* --- MAIN --- */
 .main-container {
     flex: 1;
     display: flex;
@@ -80,8 +86,12 @@ h1 {
     margin-bottom: 30px;
     font-weight: 800;
     text-align: center;
+    background: linear-gradient(135deg, #2c1f14, #8b5e3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* --- CARD --- */
 .loyalty-card {
     background: var(--card);
     padding: 50px;
@@ -89,17 +99,18 @@ h1 {
     border: 1px solid var(--border);
     width: 100%;
     max-width: 550px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* --- INPUT --- */
 input {
     width: 100%;
-    padding: 20px;
-    background: #000;
+    padding: 18px;
+    background: #f9f6f1;
     border: 1px solid var(--border);
     border-radius: 15px;
-    color: #fff;
-    font-size: 1.2rem;
+    color: var(--text-main);
+    font-size: 1.1rem;
     margin-bottom: 25px;
     outline: none;
     text-align: center;
@@ -108,13 +119,15 @@ input {
 
 input:focus {
     border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.15);
 }
 
+/* --- BUTTON --- */
 .btn-check {
     width: 100%;
-    padding: 20px;
-    background: #fff;
-    color: #000;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
     border: none;
     border-radius: 50px;
     font-size: 1.1rem;
@@ -125,11 +138,11 @@ input:focus {
 }
 
 .btn-check:hover {
-    background: var(--secondary);
     transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(139, 94, 60, 0.25);
 }
 
-/* --- REZULTATI --- */
+/* --- RESULT --- */
 #result-box {
     display: none;
     margin-top: 40px;
@@ -139,8 +152,8 @@ input:focus {
 }
 
 .res-label {
-    color: #555;
-    font-size: 0.9rem;
+    color: var(--text-gray);
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -152,9 +165,10 @@ input:focus {
     margin-bottom: 20px;
 }
 
+/* --- PROGRESS BAR --- */
 .progress-bar {
     height: 14px;
-    background: #1a1a1a;
+    background: #e8dfd5;
     border-radius: 20px;
     margin: 20px 0;
     overflow: hidden;
@@ -170,13 +184,12 @@ input:focus {
 /* --- FOOTER --- */
 footer {
     padding: 40px 8%;
-    background: #080808;
+    background: #efe7dc;
     border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #444;
-    font-size: 1rem;
+    color: var(--text-gray);
 }
 
 .socials {

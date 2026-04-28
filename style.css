@@ -1,289 +1,218 @@
- :root {
-     --accent: #7000ff;
-     --accent-light: #00d9ff;
-     --bg: #050505;
-     --card-bg: rgba(255, 255, 255, 0.03);
-     --border: rgba(255, 255, 255, 0.1);
-     --text-gray: #888;
- }
+:root {
+    --accent: #8b5e3c;        /* smeđa */
+    --accent-light: #c8a27a;  /* svijetla bež */
+    
+    --bg: #f5efe6;            /* glavna bež pozadina */
+    --card-bg: #ffffff;
+    --border: rgba(0, 0, 0, 0.08);
 
- * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
-     font-family: 'Plus Jakarta Sans', sans-serif;
-     scroll-behavior: smooth;
- }
+    --text-main: #2c1f14;     /* tamno smeđa */
+    --text-gray: #7a6a5a;
+}
 
- body {
-     background-color: var(--bg);
-     color: #fff;
-     overflow-x: hidden;
-     line-height: 1.6;
- }
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
 
- /* Pozadinski efekti */
- .blob {
-     position: fixed;
-     width: 600px;
-     height: 600px;
-     background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, transparent 70%);
-     z-index: -1;
-     filter: blur(80px);
- }
+body {
+    background: var(--bg);
+    color: var(--text-main);
+}
 
- /* Navigacija */
- nav {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     padding: 20px 8%;
-     position: fixed;
-     width: 100%;
-     top: 0;
-     background: rgba(5, 5, 5, 0.8);
-     backdrop-filter: blur(15px);
-     z-index: 1000;
-     border-bottom: 1px solid var(--border);
- }
+/* BLOBS (topli glow) */
+.blob {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 94, 60, 0.15), transparent 70%);
+    filter: blur(100px);
+    z-index: -1;
+}
 
- .logo {
-     font-size: 1.4rem;
-     font-weight: 800;
-     display: flex;
-     align-items: center;
-     gap: 10px;
-     color: #fff;
-     text-decoration: none;
-     letter-spacing: 1px;
- }
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(245, 239, 230, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
 
- .logo i {
-     color: var(--accent-light);
- }
+.logo {
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text-main);
+}
 
- nav ul {
-     display: flex;
-     list-style: none;
-     gap: 30px;
- }
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
 
- nav ul a {
-     text-decoration: none;
-     color: var(--text-gray);
-     transition: 0.3s;
-     font-size: 0.9rem;
-     font-weight: 600;
- }
+nav ul a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 600;
+}
 
- nav ul a:hover {
-     color: var(--accent-light);
- }
+nav ul a:hover {
+    color: var(--accent);
+}
 
- /* Hero Sekcija */
- header {
-     height: 100vh;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     text-align: center;
-     padding: 0 10%;
- }
+/* HERO */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    text-align: center;
+}
 
- header h1 {
-     font-size: clamp(2.5rem, 8vw, 5rem);
-     line-height: 1.1;
-     margin-bottom: 25px;
-     background: linear-gradient(to bottom right, #fff 40%, #555);
-     background-clip: text;
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     font-weight: 800;
- }
+header h1 {
+    font-size: 4rem;
+    background: linear-gradient(135deg, #2c1f14, #8b5e3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
- header p {
-     color: var(--text-gray);
-     max-width: 650px;
-     margin-bottom: 40px;
-     font-size: 1.2rem;
- }
+header p {
+    color: var(--text-gray);
+    margin: 20px 0;
+}
 
- .btn-main {
-     padding: 16px 40px;
-     background: #fff;
-     color: #000;
-     border-radius: 50px;
-     text-decoration: none;
-     font-weight: 700;
-     transition: 0.4s;
-     border: none;
-     cursor: pointer;
- }
+/* BUTTON */
+.btn-main {
+    padding: 15px 35px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
- .btn-main:hover {
-     transform: scale(1.05) translateY(-3px);
-     box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
-     background: var(--accent-light);
- }
+.btn-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(139, 94, 60, 0.3);
+}
 
- /* Sekcije općenito */
- .section {
-     padding: 120px 8%;
- }
+/* SECTIONS */
+.section {
+    padding: 120px 8%;
+    max-width: 1200px;
+    margin: auto;
+}
 
- .section-title {
-     font-size: clamp(2rem, 5vw, 3rem);
-     margin-bottom: 15px;
-     text-align: center;
- }
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+}
 
- .section-subtitle {
-     color: var(--text-gray);
-     text-align: center;
-     margin-bottom: 60px;
-     font-size: 1.1rem;
- }
+.section-subtitle {
+    text-align: center;
+    color: var(--text-gray);
+    margin-bottom: 50px;
+}
 
- /* Kartice (Cards) Grid */
- .cards-grid {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-     gap: 25px;
- }
+/* CARDS */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
 
- .card {
-     background: var(--card-bg);
-     border: 1px solid var(--border);
-     padding: 45px 35px;
-     border-radius: 28px;
-     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-     position: relative;
-     overflow: hidden;
-     display: flex;
-     flex-direction: column;
-     height: 100%;
- }
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
 
- .card:hover {
-     transform: translateY(-12px);
-     border-color: var(--accent-light);
-     background: rgba(255, 255, 255, 0.06);
-     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
- }
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(139, 94, 60, 0.15);
+}
 
- .card i {
-     font-size: 2.5rem;
-     margin-bottom: 25px;
+.card i {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--accent);
+}
 
-     /* 1. Definisanje gradijenta kao pozadine */
-     background: linear-gradient(45deg, var(--accent-light), var(--accent));
+/* ABOUT */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
 
-     /* 2. Isecanje pozadine na tekst */
-     -webkit-background-clip: text;
-     background-clip: text;
-     /* Standardna verzija radi bolje kompatibilnosti */
+.about-img {
+    height: 400px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+}
 
-     /* 3. Postavljanje boje teksta na transparentno (OVO JE KLJUČNO) */
-     -webkit-text-fill-color: transparent;
-     color: transparent;
-     /* Fallback */
- }
+.about-tag {
+    padding: 20px;
+    color: white;
+    font-size: 2rem;
+}
 
- .card h3 {
-     font-size: 1.4rem;
-     margin-bottom: 15px;
-     font-weight: 700;
- }
+/* LIST */
+.check-list {
+    list-style: none;
+    margin-top: 20px;
+}
 
- .card p {
-     color: var(--text-gray);
-     font-size: 0.95rem;
-     line-height: 1.7;
- }
+.check-list li {
+    margin-bottom: 10px;
+}
 
- /* O nama sekcija */
- .about-grid {
-     display: grid;
-     grid-template-columns: 1fr 1fr;
-     gap: 60px;
-     align-items: center;
-     margin-top: 50px;
- }
+/* FOOTER */
+footer {
+    padding: 40px 8%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    color: var(--text-gray);
+}
 
- .about-img {
-     width: 100%;
-     height: 450px;
-     background: linear-gradient(45deg, var(--accent), var(--accent-light));
-     border-radius: 40px;
-     position: relative;
-     box-shadow: 0 30px 60px rgba(112, 0, 255, 0.2);
- }
+.social-icons i {
+    margin-left: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
- .about-tag {
-     position: absolute;
-     bottom: 30px;
-     left: 30px;
-     font-weight: 900;
-     font-size: 4rem;
-     opacity: 0.15;
-     letter-spacing: -2px;
- }
+.social-icons i:hover {
+    color: var(--accent);
+}
 
- .check-list {
-     list-style: none;
-     margin-top: 25px;
- }
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
 
- .check-list li {
-     margin-bottom: 12px;
-     display: flex;
-     align-items: center;
-     gap: 12px;
-     color: #ddd;
- }
+    nav ul {
+        display: none;
+    }
 
- .check-list i {
-     color: var(--accent-light);
- }
-
- /* Footer */
- footer {
-     padding: 60px 8%;
-     border-top: 1px solid var(--border);
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     color: #555;
-     font-size: 0.9rem;
- }
-
- .social-icons {
-     display: flex;
-     gap: 25px;
- }
-
- .social-icons i {
-     font-size: 1.2rem;
-     cursor: pointer;
-     transition: 0.3s;
- }
-
- .social-icons i:hover {
-     color: var(--accent-light);
- }
-
- /* Mobitel prilagodba */
- @media (max-width: 992px) {
-     .about-grid {
-         grid-template-columns: 1fr;
-     }
-
-     nav ul {
-         display: none;
-     }
-
-     header h1 {
-         font-size: 3.5rem;
-     }
- }
+    header h1 {
+        font-size: 2.5rem;
+    }
+}
